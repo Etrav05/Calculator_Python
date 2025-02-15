@@ -11,7 +11,7 @@ def add(x, y):
 def sub(x, y):
     return float(x) - float(y)
 
-def processBrackets(input_list):  # process the * and / operators first (BE "DM" AS)
+def processBrackets(input_list):  # process the ( ) operators first and their contents ("B" EDMAS)
     i = 0
     stack = []  # store initial bracket "("
     while i < len(input_list):
@@ -40,7 +40,7 @@ def processMultDiv(input_list):  # process the * and / operators (BE "DM" AS)
             i = 0
         else:
             i += 1
-    return input_list
+    return [eval("".join(input_list))]
 
 def processAddSub(input_list):  # process the + and - operators (BEDM "AS")
     i = 0
@@ -55,8 +55,7 @@ def processAddSub(input_list):  # process the + and - operators (BEDM "AS")
             i = 0
         else:
             i += 1
-    return input_list
-
+    return [eval("".join(input_list))]
 
 userInput = [i for i in input('Enter function here (*, /, -, +, accepted): ').split()]  # takes input -> splits elements
 
